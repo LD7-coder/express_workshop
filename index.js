@@ -15,6 +15,6 @@ app.listen(3000, () => {
 });
 
 app.get('/', (req, res, next) => {
-    res.status(200);
-    res.send('Hello World');
+    res.status(200); // 200 es que todo esta bien
+    res.send('Hello Worlds');
 });
