@@ -1,12 +1,12 @@
-const bodyParser = require('body-parser')
 const morgan = require('morgan');
 const express = require('express');
 const app = express();
 const pokemon = require('./Routes/pokemon');
 
 app.use(morgan('dev')); //Este middleware nos ayuda a ver las peticiones que llegan al servidor
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}))
+
 
 /*
 VERBOS HTTP
@@ -22,6 +22,10 @@ app.get('/', (req, res) => {
 
 app.use("/pokemon", pokemon);
 
+app.use((req, res, next) => {
+    return res.status(404).json({code: 404, message: "URL no encontrada"}); 
+    });
+
 app.listen(process.env.PORT || 3000, () => { 
-    console.log("Server is running...");
+    console.log("Server is running in port 3000");
 });
