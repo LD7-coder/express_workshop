@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const pokemon = require('./Routes/pokemon');
 
-app.use(morgan('dev')); //Este middleware nos ayuda a ver las peticiones que llegan al servidor
+app.use(morgan('dev')); 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 
@@ -17,7 +17,7 @@ PUT: Actualizar todos los elementos (Ej. nombre, apellido, edad)
 DELETE: Eliminar datos
 */
 app.get('/', (req, res) => {
-    res.status(200).send("Bienvenido al pokedex");
+    res.status(200).json({code: 1, message: "Bienvenido al pokedex"});
 });
 
 app.use("/pokemon", pokemon);
